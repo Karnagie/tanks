@@ -15,10 +15,16 @@ namespace Core.Models.Services
 
         public void Tick()
         {
-            var animators = _systemService.TryFindSystems<IMover>();
-            foreach (var animator in animators)
+            var movers = _systemService.TryFindSystems<IMover>();
+            foreach (var mover in movers)
             {
-                animator.Move();
+                mover.Move();
+            }
+            
+            var rotators = _systemService.TryFindSystems<IRotator>();
+            foreach (var rotator in rotators)
+            {
+                rotator.Rotate();
             }
         }
 

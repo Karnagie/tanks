@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Zenject;
+using NotImplementedException = System.NotImplementedException;
 
 namespace Infrastructure.Services.Input
 {
@@ -8,8 +9,20 @@ namespace Infrastructure.Services.Input
         private const int DefaultSpeedMultiplier = 3;
         
         public bool Attack { get; private set; }
+        
+        public float Rotating()
+        {
+            var rotating = 0f;
 
-
+            if (UnityEngine.Input.GetKey("q"))
+                rotating -= 1;
+            
+            if (UnityEngine.Input.GetKey("e"))
+                rotating += 1;
+            
+            return rotating;
+        }
+        
         public Vector2 Moving()
         {
             var horizontal = UnityEngine.Input.GetAxis("Horizontal");

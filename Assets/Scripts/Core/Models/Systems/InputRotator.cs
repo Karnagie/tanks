@@ -1,25 +1,25 @@
-﻿using Core.Models.Services;
 using Infrastructure.Services.Input;
+using UnityEngine;
 
 namespace Core.Models.Systems
 {
-    public class InputMover : IMover
+    public class InputRotator : IRotator
     {
         private readonly IInputService _inputService;
         private readonly Unit _model;
         private readonly float _speed;
 
-        public InputMover(Unit model, float speed, IInputService inputService)
+        public InputRotator(Unit model, float speed, IInputService inputService)
         {
             _speed = speed;
             _model = model;
             _inputService = inputService;
         }
 
-        public void Move()
+        public void Rotate()
         {
-            var translation = _inputService.Moving();
-            _model.Transform.Translate(translation * _speed);
+            var rotateSpeed = _inputService.Rotating();
+            _model.Transform.rotation *= Quaternion.AngleAxis(-rotateSpeed*_speed, Vector3.forward);
         }
     }
 }

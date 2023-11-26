@@ -29,6 +29,8 @@ namespace Infrastructure.Factories
 
         public void CreatePlayer(Vector3 position)
         {
+            var speed = 1f;
+            
             var behaviour = _viewFactory.Player(position);
             var player = new Unit(
                 "Player", 
@@ -36,15 +38,17 @@ namespace Infrastructure.Factories
                 Fraction.Player,
                 100,
                 10,
-                1);
+                speed);
             var binder = _binderFactory.Create();
             var linker = new SystemLinker();
             
             //components
-            var mover = _serviceSystemFactory.InputMover(player);
+            var mover = _serviceSystemFactory.InputMover(player, speed);
+            var rotator = _serviceSystemFactory.InputRotator(player, speed);
             
             linker.Add(player);
             linker.Add(mover);
+            linker.Add(rotator);
             
             binder.BindProperty(player.Name, newName => behaviour.Name.text = $"{newName}");
             binder.BindProperty(player.Health, newHealth => behaviour.Health.text = $"hp: {newHealth}");

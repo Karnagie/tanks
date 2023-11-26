@@ -6,5 +6,6 @@ namespace Infrastructure.Services.Input
     {
         Vector2 Moving();
         bool Attack { get; }
+        float Rotating();
     }
 }
