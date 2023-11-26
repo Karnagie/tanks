@@ -33,7 +33,10 @@ namespace Infrastructure.Factories
             var player = new Unit(
                 "Player", 
                 behaviour.Transform,
-                Fraction.Player);
+                Fraction.Player,
+                100,
+                10,
+                1);
             var binder = _binderFactory.Create();
             var linker = new SystemLinker();
             
@@ -42,6 +45,11 @@ namespace Infrastructure.Factories
             
             linker.Add(player);
             linker.Add(mover);
+            
+            binder.BindProperty(player.Name, newName => behaviour.Name.text = $"{newName}");
+            binder.BindProperty(player.Health, newHealth => behaviour.Health.text = $"hp: {newHealth}");
+            binder.BindProperty(player.Armor, newArmor => behaviour.Armor.text = $"armor: {newArmor}");
+            binder.BindProperty(player.Speed, newSpeed => behaviour.Speed.text = $"speed: {newSpeed}");
             
             LinkDisposing(binder, linker, player, behaviour);
         }
@@ -52,7 +60,10 @@ namespace Infrastructure.Factories
             var bot = new Unit(
                 $"Monster_{_monsterSpawnedCounter}",
                 behaviour.Transform, 
-                Fraction.Monster);
+                Fraction.Monster,
+                10,
+                2,
+                0.5f);
             var binder = _binderFactory.Create();
             var linker = new SystemLinker();
             
