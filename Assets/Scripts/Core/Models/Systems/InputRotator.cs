@@ -6,20 +6,20 @@ namespace Core.Models.Systems
     public class InputRotator : IRotator
     {
         private readonly IInputService _inputService;
-        private readonly Unit _model;
+        private readonly Transform _transform;
         private readonly float _speed;
 
-        public InputRotator(Unit model, float speed, IInputService inputService)
+        public InputRotator(Transform transform, float speed, IInputService inputService)
         {
             _speed = speed;
-            _model = model;
+            _transform = transform;
             _inputService = inputService;
         }
 
         public void Rotate()
         {
             var rotateSpeed = _inputService.Rotating();
-            _model.Transform.rotation *= Quaternion.AngleAxis(-rotateSpeed*_speed, Vector3.forward);
+            _transform.rotation *= Quaternion.AngleAxis(-rotateSpeed*_speed, Vector3.forward);
         }
     }
 }

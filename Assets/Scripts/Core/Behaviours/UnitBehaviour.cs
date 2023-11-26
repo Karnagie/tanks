@@ -12,5 +12,6 @@ namespace Core.Behaviours
         public TMP_Text Health;
         public TMP_Text Armor;
         public TMP_Text Speed;
+        public Transform WeapontPoint;
     }
 }

@@ -29,7 +29,7 @@ namespace Core.Services.Input
         {
             Attack = false;
             
-            if (UnityEngine.Input.GetAxis("Fire1") == 1)
+            if (UnityEngine.Input.GetKey("x"))
                 Attack = true;
         }
     }

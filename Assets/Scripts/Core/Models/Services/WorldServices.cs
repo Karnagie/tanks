@@ -1,5 +1,7 @@
 ﻿using Core.Models.Systems;
+using Infrastructure.Factories;
 using Infrastructure.Services.System;
+using UnityEngine;
 using Zenject;
 
 namespace Core.Models.Services
@@ -25,6 +27,12 @@ namespace Core.Models.Services
             foreach (var rotator in rotators)
             {
                 rotator.Rotate();
+            }
+
+            var shooters = _systemService.TryFindSystems<IShooter>();
+            foreach (var shooter in shooters)
+            {
+                shooter.TryShoot();
             }
         }
 

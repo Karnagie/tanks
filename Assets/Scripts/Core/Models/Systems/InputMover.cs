@@ -1,25 +1,26 @@
 ﻿using Core.Models.Services;
 using Core.Services.Input;
+using UnityEngine;
 
 namespace Core.Models.Systems
 {
     public class InputMover : IMover
     {
         private readonly IInputService _inputService;
-        private readonly Unit _model;
+        private readonly Transform _transform;
         private readonly float _speed;
 
-        public InputMover(Unit model, float speed, IInputService inputService)
+        public InputMover(Transform transform, float speed, IInputService inputService)
         {
             _speed = speed;
-            _model = model;
+            _transform = transform;
             _inputService = inputService;
         }
 
         public void Move()
         {
             var translation = _inputService.Moving();
-            _model.Transform.Translate(translation * _speed);
+            _transform.Translate(translation * _speed);
         }
     }
 }

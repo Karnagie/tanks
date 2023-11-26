@@ -1,12 +1,13 @@
 ﻿using Core.Models;
 using Core.Models.Systems;
 using Core.Services.Input;
+using UnityEngine;
 
 namespace Core.Services
 {
     public class ServiceSystemFactory
     {
-        private IInputService _inputService;
+        private readonly IInputService _inputService;
 
         public ServiceSystemFactory(
             IInputService inputService)
@@ -14,14 +15,19 @@ namespace Core.Services
             _inputService = inputService;
         }
 
-        public ISystem InputMover(Unit unit, float speed)
+        public ISystem InputMover(Transform transform, float speed)
         {
-            return new InputMover(unit, speed, _inputService);
+            return new InputMover(transform, speed, _inputService);
         }
 
-        public ISystem InputRotator(Unit unit, float speed)
+        public ISystem InputRotator(Transform transform, float speed)
         {
-            return new InputRotator(unit, speed, _inputService);
+            return new InputRotator(transform, speed, _inputService);
+        }
+
+        public ISystem ForwardMover(Transform transform, float speed)
+        {
+            return new ForwardMover(transform, speed);
         }
     }
 }

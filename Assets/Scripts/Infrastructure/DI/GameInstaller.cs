@@ -40,12 +40,16 @@ namespace Infrastructure.DI
             Container.Bind<WindowsService>().AsSingle();
             Container.Bind<ICoroutineRunner>().FromInstance(this).AsSingle();
             Container.BindInterfacesAndSelfTo<WorldServices>().AsSingle();
+            Container.Bind<ShootService>().AsSingle();
 
             //Factories
             Container.Bind<UnitFactory>().AsSingle();
-            Container.Bind<ViewFactory>().To<ViewFactory>().AsSingle();
-            Container.Bind<ServiceSystemFactory>().To<ServiceSystemFactory>().AsSingle();
-            Container.Bind<BinderFactory>().To<BinderFactory>().AsSingle();
+            Container.Bind<ViewFactory>().AsSingle();
+            Container.Bind<ServiceSystemFactory>().AsSingle();
+            Container.Bind<BinderFactory>().AsSingle();
+            Container.Bind<WeaponFactory>().AsSingle();
+            Container.Bind<BulletFactory>().AsSingle();
+            Container.Bind<WeaponSystemsFactory>().AsSingle();
         }
     }
 }
