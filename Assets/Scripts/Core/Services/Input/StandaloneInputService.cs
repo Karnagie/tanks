@@ -12,20 +12,14 @@ namespace Infrastructure.Services.Input
         
         public float Rotating()
         {
-            var rotating = 0f;
-
-            if (UnityEngine.Input.GetKey("q"))
-                rotating -= 1;
-            
-            if (UnityEngine.Input.GetKey("e"))
-                rotating += 1;
+            var rotating = UnityEngine.Input.GetAxis("Horizontal");
             
             return rotating;
         }
         
         public Vector2 Moving()
         {
-            var horizontal = UnityEngine.Input.GetAxis("Horizontal");
+            var horizontal = 0;
             var vertical = UnityEngine.Input.GetAxis("Vertical");
 
             var direction = new Vector2(horizontal, vertical);
