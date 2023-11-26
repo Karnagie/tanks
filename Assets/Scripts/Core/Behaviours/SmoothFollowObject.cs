@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Core.Behaviours
 {
@@ -18,6 +19,12 @@ namespace Core.Behaviours
 
         private void Update()
         {
+            if(_target.Equals(null))
+            {
+                Object.Destroy(gameObject);
+                return;
+            }
+            
             transform.position =
                 Vector3.Slerp(transform.position, _target.position + _offset, _followTime * Time.deltaTime);
         }

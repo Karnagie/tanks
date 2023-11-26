@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 518195668714168595}
   - component: {fileID: 8978737311392890011}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8289210355573926384}
   - component: {fileID: 8009313521047020964}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DefaultBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8493755285953339532}
   - component: {fileID: 3066367199527661522}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2458480133871759607}
   - component: {fileID: 6590192469633841968}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

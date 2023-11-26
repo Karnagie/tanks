@@ -13,27 +13,37 @@ namespace Core.Models
         public Transform WeaponPoint { get; }
         public Observable Killed { get; } = new();
         public Fraction Fraction { get; }
-        public IObservable<int> Health { get; }
-        public IObservable<int> Armor { get; }
-        public IObservable<float> Speed { get; }
+        public ReactiveProperty<float> Health { get; }
+        public ReactiveProperty<float> Armor { get; }
+        public ReactiveProperty<float> Speed { get; }
+        public Collider2D Collider { get; }
 
 
         public Unit(
             string name, 
             Transform transform,
             Fraction fraction,
-            int health,
-            int armor,
+            float health,
+            float armor,
             float speed, 
-            Transform weaponPoint)
+            Transform weaponPoint, 
+            Collider2D collider)
         {
             Name = new ReactiveProperty<string>(name);
             Transform = transform;
             Fraction = fraction;
             WeaponPoint = weaponPoint;
-            Health = new ReactiveProperty<int>(health);
-            Armor = new ReactiveProperty<int>(armor);
+            Collider = collider;
+            Health = new ReactiveProperty<float>(health);
+            Armor = new ReactiveProperty<float>(armor);
             Speed = new ReactiveProperty<float>(speed);
+        }
+
+        public void Damage(int damage)
+        {
+            Health.Value -= (damage * Armor.Value);
+            if(Health.Value <= 0)
+                Killed.Invoke();
         }
     }
 

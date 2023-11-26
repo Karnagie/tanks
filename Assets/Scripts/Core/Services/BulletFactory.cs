@@ -8,7 +8,7 @@ namespace Core.Services
 {
     public class BulletFactory
     {
-        private const float BulletSpeed = 100f;
+        private const float BulletSpeed = 20f;
         
         private readonly ViewFactory _viewFactory;
         private BinderFactory _binderFactory;
@@ -39,12 +39,14 @@ namespace Core.Services
             
             //components
             var mover = _serviceSystemFactory.ForwardMover(bullet.Transform, BulletSpeed);
+            var damager = _serviceSystemFactory.DamagerOnCollision(bullet.Fraction, bullet.Collider, weapon.Damage);
             var destroyed = _serviceSystemFactory.DestroyerOnCollision(bullet.Collider, bullet);
             
             linker.Add(bullet);
             linker.Add(weapon);
             linker.Add(mover);
             linker.Add(destroyed);
+            linker.Add(damager);
             
             LinkDisposing(binder, linker);
             binder.LinkEvent(bullet.Destroyed, binder.Dispose);

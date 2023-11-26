@@ -11,13 +11,16 @@ namespace Core.Services
     {
         private readonly IInputService _inputService;
         private readonly IPhysicsService _physicsService;
+        private readonly UnitService _unitService;
 
         public ServiceSystemFactory(
             IInputService inputService, 
-            IPhysicsService physicsService)
+            IPhysicsService physicsService,
+            UnitService unitService)
         {
             _inputService = inputService;
             _physicsService = physicsService;
+            _unitService = unitService;
         }
 
         public ISystem InputMover(Transform transform, float speed)
@@ -38,6 +41,16 @@ namespace Core.Services
         public ISystem DestroyerOnCollision(Collider2D collider, IDestroyable destroyable)
         {
             return new DestroyerOnCollision(collider, _physicsService, destroyable);
+        }
+
+        public ISystem MonsterMover(Transform transform, float speed)
+        {
+            return new MonsterMover(transform, speed, _unitService);
+        }
+
+        public ISystem DamagerOnCollision(Fraction fraction, Collider2D collider, int damage)
+        {
+            return new DamagerOnCollision(fraction, collider, _physicsService, damage);
         }
     }
 }

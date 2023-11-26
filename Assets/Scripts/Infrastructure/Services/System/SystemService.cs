@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Core.Models.Systems;
 using Infrastructure.Services.Binding;
 using UnityEngine;
@@ -23,8 +24,8 @@ namespace Infrastructure.Services.System
                     targets.AddRange(systems);
                 }
             }
-
-            return targets.ToArray();
+            
+            return targets.Distinct().ToArray();
         }
 
         public SystemLinker[] LinkersThatHas(ISystem system)

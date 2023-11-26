@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6586258645859655066}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WeaponPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 77666630145851694}
   - component: {fileID: 7964394273841580694}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: NameFollower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3900840097674737545}
   - component: {fileID: 3900840097674737544}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 3900840097832269640}
   - component: {fileID: 3900840097832269641}
   - component: {fileID: 367920693964886872}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3900840098269050755}
   - component: {fileID: 3900840098269050752}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,7 +308,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6254851092882804388}
   - component: {fileID: 4660806153288673836}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StatsFollowers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 7195058317015591823}
   - component: {fileID: 7094906293528990240}
   - component: {fileID: 5824329039964128929}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Text_Armor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,7 +530,7 @@ GameObject:
   - component: {fileID: 4235535385176391743}
   - component: {fileID: 1202033332791354904}
   - component: {fileID: 1608515759823334082}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Text_Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -700,7 +700,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2307481744763989551}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -733,7 +733,7 @@ GameObject:
   - component: {fileID: 3526440334518947517}
   - component: {fileID: 2352416272392152370}
   - component: {fileID: 7241215397743322205}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Text_Speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -905,7 +905,7 @@ GameObject:
   - component: {fileID: 9077995433795246220}
   - component: {fileID: 1062433262446019549}
   - component: {fileID: 8419527515832758789}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Text_Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}

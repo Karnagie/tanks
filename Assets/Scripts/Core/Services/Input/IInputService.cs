@@ -9,5 +9,6 @@ namespace Core.Services.Input
         bool NextWeaponChoose { get; }
         bool PreviousWeaponChoose { get; }
         float Rotating();
+        void Tick();
     }
 }

@@ -24,4 +24,9 @@ namespace Core.Models.Systems
             }
         }
     }
+
+    public interface IDamager : ISystem
+    {
+        void TryDamage();
+    }
 }

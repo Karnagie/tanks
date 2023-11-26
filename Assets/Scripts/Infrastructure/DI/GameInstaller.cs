@@ -43,6 +43,7 @@ namespace Infrastructure.DI
             Container.BindInterfacesAndSelfTo<WorldServiceTicker>().AsSingle();
             Container.Bind<ShootService>().AsSingle();
             Container.Bind<WeaponService>().AsSingle();
+            Container.Bind<UnitService>().AsSingle();
 
             //Factories
             Container.Bind<UnitFactory>().AsSingle();

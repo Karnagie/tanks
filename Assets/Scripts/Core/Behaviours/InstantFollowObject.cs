@@ -16,6 +16,12 @@ namespace Core.Behaviours
 
         private void Update()
         {
+            if(_target.Equals(null))
+            {
+                Object.Destroy(gameObject);
+                return;
+            }
+            
             transform.position = _target.position + _offset;
         }
     }

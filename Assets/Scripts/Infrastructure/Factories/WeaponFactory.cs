@@ -30,7 +30,8 @@ namespace Infrastructure.Factories
             var behaviour = _viewFactory.DefaultWeapon(parent);
             var weapon = new DefaultWeapon(
                 behaviour.BulletSpawnPoint,
-                owner.Fraction);
+                owner.Fraction,
+                1);
             var binder = _binderFactory.Create();
             var linker = new SystemLinker();
             
@@ -50,7 +51,8 @@ namespace Infrastructure.Factories
             var behaviour = _viewFactory.SlowWeapon(parent);
             var weapon = new DefaultWeapon(
                 behaviour.BulletSpawnPoint,
-                owner.Fraction);
+                owner.Fraction,
+                10);
             var binder = _binderFactory.Create();
             var linker = new SystemLinker();
             

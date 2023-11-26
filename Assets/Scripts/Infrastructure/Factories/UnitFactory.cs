@@ -12,7 +12,7 @@ namespace Infrastructure.Factories
     {
         private const float UnitSpeed = 1f;
         private const int PlayerHealth = 100;
-        private const int UnitArmor = 10;
+        private const float UnitArmor = 0.5f;
 
         private readonly ViewFactory _viewFactory;
         private readonly ServiceSystemFactory _serviceSystemFactory;
@@ -48,7 +48,8 @@ namespace Infrastructure.Factories
                 PlayerHealth,
                 UnitArmor,
                 UnitSpeed,
-                behaviour.WeapontPoint);
+                behaviour.WeapontPoint,
+                behaviour.Collider);
             var binder = _binderFactory.Create();
             var linker = new SystemLinker();
             
@@ -72,27 +73,37 @@ namespace Infrastructure.Factories
             LinkDisposing(binder, linker, player, behaviour);
         }
         
-        public void CreateMonster(Vector3 position)
+        public void CreateRandomMonster(Vector3 position)
         {
-            var behaviour = _viewFactory.Monster(position);
+            var behaviour = _viewFactory.RandomMonster(position);
             var bot = new Unit(
                 $"Monster_{_monsterSpawnedCounter}",
                 behaviour.Transform, 
                 Fraction.Monster,
-                10,
-                2,
-                0.5f,
-                behaviour.WeapontPoint);
+                10 * Random.Range(0.5f, 1.5f),
+                0.5f * Random.Range(0.5f, 1.5f),
+                0.5f * Random.Range(0.5f, 1.5f),
+                behaviour.WeapontPoint,
+                behaviour.Collider);
             var binder = _binderFactory.Create();
             var linker = new SystemLinker();
             
             //components
-            // var mover = _serviceSystemFactory.MonsterMover(bot);
+            var mover = _serviceSystemFactory.MonsterMover(bot.Transform, bot.Speed.Value);
+            var damager = _serviceSystemFactory.DamagerOnCollision(bot.Fraction, bot.Collider, 1);
             
             linker.Add(bot);
-            // linker.Add(mover);
+            linker.Add(mover);
+            linker.Add(damager);
+            
+            binder.BindProperty(bot.Name, newName => behaviour.Name.text = $"{newName}");
+            binder.BindProperty(bot.Health, newHealth => behaviour.Health.text = $"hp: {newHealth:F2}");
+            binder.BindProperty(bot.Armor, newArmor => behaviour.Armor.text = $"armor: {newArmor:F2}");
+            binder.BindProperty(bot.Speed, newSpeed => behaviour.Speed.text = $"speed: {newSpeed:F2}");
             
             LinkDisposing(binder, linker, bot, behaviour);
+            
+            _monsterSpawnedCounter++;
         }
 
         private void LinkDisposing(Binder binder, SystemLinker linker, Unit bot, UnitBehaviour behaviour)

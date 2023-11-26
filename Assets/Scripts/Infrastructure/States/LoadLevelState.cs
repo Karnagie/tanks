@@ -38,6 +38,7 @@ namespace Infrastructure.States
         private void OnLoaded()
         {
             _unitFactory.CreatePlayer(new Vector3(0,0,0));
+            _unitFactory.CreateRandomMonster(new Vector3(10,10,0));
             
             _gameStateMachine.Enter<GameLoopState>();
         }

@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Core.Services.Input
 {
-    public class StandaloneInputService : IInputService, ITickable
+    public class StandaloneInputService : IInputService
     {
         private const int DefaultSpeedMultiplier = 3;
         

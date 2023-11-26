@@ -2,13 +2,19 @@ using Core.Behaviours;
 using Infrastructure.AssetManagement;
 using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Infrastructure.Factories
 {
     public class ViewFactory
     {
         private const string DefaultPlayerPath = "Characters/Player";
-        private const string DefaultMonsterPath = "Characters/Monster";
+        private readonly string[] DefaultMonsterPaths = new []
+        {
+            "Characters/Monster",
+            "Characters/Monster1",
+            "Characters/Monster2"
+        };
         
         private const string DefaultWeaponPath = "Weapons/DefaultWeapon";
         private const string SlowWeaponPath = "Weapons/SlowWeapon";
@@ -29,9 +35,10 @@ namespace Infrastructure.Factories
             return prefab;
         }
         
-        public UnitBehaviour Monster(Vector3 position)
+        public UnitBehaviour RandomMonster(Vector3 position)
         {
-            UnitBehaviour prefab = _assetProvider.Instantiate<UnitBehaviour>(DefaultMonsterPath);
+            var randomIndex = Random.Range(0, DefaultMonsterPaths.Length);
+            UnitBehaviour prefab = _assetProvider.Instantiate<UnitBehaviour>(DefaultMonsterPaths[randomIndex]);
             prefab.Transform.position = position;
             
             return prefab;
