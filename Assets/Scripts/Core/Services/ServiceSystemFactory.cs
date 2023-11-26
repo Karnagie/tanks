@@ -1,6 +1,7 @@
 ﻿using Core.Models;
 using Core.Models.Systems;
 using Core.Services.Input;
+using Infrastructure.Factories;
 using Infrastructure.Services.Physics;
 using UnityEngine;
 
@@ -12,7 +13,8 @@ namespace Core.Services
         private readonly IPhysicsService _physicsService;
 
         public ServiceSystemFactory(
-            IInputService inputService, IPhysicsService physicsService)
+            IInputService inputService, 
+            IPhysicsService physicsService)
         {
             _inputService = inputService;
             _physicsService = physicsService;

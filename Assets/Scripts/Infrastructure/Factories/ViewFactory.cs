@@ -1,5 +1,6 @@
 using Core.Behaviours;
 using Infrastructure.AssetManagement;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Infrastructure.Factories
@@ -10,6 +11,7 @@ namespace Infrastructure.Factories
         private const string DefaultMonsterPath = "Characters/Monster";
         
         private const string DefaultWeaponPath = "Weapons/DefaultWeapon";
+        private const string SlowWeaponPath = "Weapons/SlowWeapon";
         private const string DefaultBulletPath = "Weapons/DefaultBullet";
         
         private IAssetProvider _assetProvider;
@@ -40,6 +42,7 @@ namespace Infrastructure.Factories
             WeaponBehaviour prefab = _assetProvider.Instantiate<WeaponBehaviour>(DefaultWeaponPath);
             prefab.Transform.SetParent(parent);
             prefab.Transform.localPosition = Vector3.zero;
+            prefab.Transform.localRotation = quaternion.identity;
             
             return prefab;
         }
@@ -49,6 +52,16 @@ namespace Infrastructure.Factories
             BulletBehaviour prefab = _assetProvider.Instantiate<BulletBehaviour>(DefaultBulletPath);
             prefab.Transform.position = spawnPoint.position;
             prefab.Transform.rotation = spawnPoint.rotation;
+            
+            return prefab;
+        }
+
+        public WeaponBehaviour SlowWeapon(Transform parent)
+        {
+            WeaponBehaviour prefab = _assetProvider.Instantiate<WeaponBehaviour>(SlowWeaponPath);
+            prefab.Transform.SetParent(parent);
+            prefab.Transform.localPosition = Vector3.zero;
+            prefab.Transform.localRotation = quaternion.identity;
             
             return prefab;
         }

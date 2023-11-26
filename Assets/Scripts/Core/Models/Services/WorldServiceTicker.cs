@@ -6,11 +6,11 @@ using Zenject;
 
 namespace Core.Models.Services
 {
-    public class WorldServices : ITickable, IFixedTickable
+    public class WorldServiceTicker : ITickable, IFixedTickable
     {
         private SystemService _systemService;
 
-        public WorldServices(SystemService systemService)
+        public WorldServiceTicker(SystemService systemService)
         {
             _systemService = systemService;
         }
@@ -39,6 +39,12 @@ namespace Core.Models.Services
             foreach (var destroyer in destroyers)
             {
                 destroyer.TryDestroy();
+            }
+            
+            var weaponChangers = _systemService.TryFindSystems<IWeaponChanger>();
+            foreach (var weaponChanger in weaponChangers)
+            {
+                weaponChanger.TryChange();
             }
         }
 

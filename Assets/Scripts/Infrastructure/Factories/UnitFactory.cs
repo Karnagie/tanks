@@ -19,15 +19,18 @@ namespace Infrastructure.Factories
         private readonly SystemService _systemService;
         private readonly BinderFactory _binderFactory;
         private readonly WeaponFactory _weaponFactory;
+        private readonly PlayerWeaponSystemsFactory _playerWeaponSystemsFactory;
 
         private int _monsterSpawnedCounter;
 
         public UnitFactory(ViewFactory viewFactory,
             ServiceSystemFactory serviceSystemFactory,
+            PlayerWeaponSystemsFactory playerWeaponSystemsFactory,
             SystemService systemService,
             BinderFactory binderFactory,
             WeaponFactory weaponFactory)
         {
+            _playerWeaponSystemsFactory = playerWeaponSystemsFactory;
             _weaponFactory = weaponFactory;
             _binderFactory = binderFactory;
             _systemService = systemService;
@@ -54,10 +57,12 @@ namespace Infrastructure.Factories
             //components
             var mover = _serviceSystemFactory.InputMover(player.Transform, UnitSpeed);
             var rotator = _serviceSystemFactory.InputRotator(player.Transform, UnitSpeed);
+            var weaponChanger = _playerWeaponSystemsFactory.WeaponChanger(player);
             
             linker.Add(player);
             linker.Add(mover);
             linker.Add(rotator);
+            linker.Add(weaponChanger);
             
             binder.BindProperty(player.Name, newName => behaviour.Name.text = $"{newName}");
             binder.BindProperty(player.Health, newHealth => behaviour.Health.text = $"hp: {newHealth}");

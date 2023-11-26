@@ -14,5 +14,10 @@ namespace Core.Models.Systems
             BulletSpawnPoint = bulletSpawnPoint;
             Fraction = fraction;
         }
+
+        public void Destroy()
+        {
+            Destroyed.Invoke();
+        }
     }
 }

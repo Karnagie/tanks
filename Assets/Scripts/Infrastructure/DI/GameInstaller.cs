@@ -1,4 +1,5 @@
 ﻿using Core.Models.Services;
+using Core.Models.Systems;
 using Core.Services;
 using Core.Services.Input;
 using Infrastructure.AssetManagement;
@@ -39,8 +40,9 @@ namespace Infrastructure.DI
             Container.Bind<BinderService>().AsSingle();
             Container.Bind<WindowsService>().AsSingle();
             Container.Bind<ICoroutineRunner>().FromInstance(this).AsSingle();
-            Container.BindInterfacesAndSelfTo<WorldServices>().AsSingle();
+            Container.BindInterfacesAndSelfTo<WorldServiceTicker>().AsSingle();
             Container.Bind<ShootService>().AsSingle();
+            Container.Bind<WeaponService>().AsSingle();
 
             //Factories
             Container.Bind<UnitFactory>().AsSingle();
@@ -50,6 +52,7 @@ namespace Infrastructure.DI
             Container.Bind<WeaponFactory>().AsSingle();
             Container.Bind<BulletFactory>().AsSingle();
             Container.Bind<WeaponSystemsFactory>().AsSingle();
+            Container.Bind<PlayerWeaponSystemsFactory>().AsSingle();
         }
     }
 }

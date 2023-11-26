@@ -6,6 +6,8 @@ namespace Core.Services.Input
     {
         Vector2 Moving();
         bool Attack { get; }
+        bool NextWeaponChoose { get; }
+        bool PreviousWeaponChoose { get; }
         float Rotating();
     }
 }

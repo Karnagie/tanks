@@ -1,17 +1,20 @@
 ﻿using Core.Services;
 using Core.Services.Input;
-using Infrastructure.Factories;
-using UnityEngine.WSA;
+using UnityEngine;
 
 namespace Core.Models.Systems
 {
-    public class DefaultInputShooter : IShooter
+    public class SlowInputShooter : IShooter
     {
+        private const float Cooldown = 1f;
+        
         private readonly IWeapon _weapon;
         private readonly ShootService _shootService;
         private readonly IInputService _inputService;
 
-        public DefaultInputShooter(
+        private float _nextShotTime;
+
+        public SlowInputShooter(
             IWeapon weapon, 
             ShootService shootService,
             IInputService inputService)
@@ -23,8 +26,14 @@ namespace Core.Models.Systems
         
         public void TryShoot()
         {
+            if(Time.time < _nextShotTime)
+                return;
+            
             if(_inputService.Attack)
+            {
                 _shootService.Shoot(_weapon.BulletSpawnPoint, _weapon);
+                _nextShotTime = Time.time + Cooldown;
+            }
         }
     }
 }

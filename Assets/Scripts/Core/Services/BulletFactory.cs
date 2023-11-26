@@ -46,16 +46,14 @@ namespace Core.Services
             linker.Add(mover);
             linker.Add(destroyed);
             
-            LinkDisposing(binder, linker, weapon, behaviour);
+            LinkDisposing(binder, linker);
             binder.LinkEvent(bullet.Destroyed, binder.Dispose);
             binder.LinkEvent(bullet.Destroyed, (() => Object.Destroy(behaviour.gameObject)));
         }
         
-        private void LinkDisposing(Binder binder, SystemLinker linker, IWeapon weapon, MonoBehaviour behaviour)
+        private void LinkDisposing(Binder binder, SystemLinker linker)
         {
             binder.LinkHolder(_systemService, linker);
-            binder.LinkEvent(weapon.Destroyed, binder.Dispose);
-            binder.LinkEvent(weapon.Destroyed, (() => Object.Destroy(behaviour.gameObject)));
         }
     }
 }

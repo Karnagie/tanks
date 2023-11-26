@@ -8,5 +8,6 @@ namespace Core.Models.Systems
         Transform BulletSpawnPoint { get; }
         Fraction Fraction { get; }
         Observable Destroyed { get; }
+        void Destroy();
     }
 }
