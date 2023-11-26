@@ -32,18 +32,23 @@ namespace Core.Services
             var behaviour = _viewFactory.DefaultBullet(spawnPoint);
             var bullet = new DefaultBullet(
                 behaviour.Transform,
-                weapon.Fraction);
+                weapon.Fraction,
+                behaviour.Collider);
             var binder = _binderFactory.Create();
             var linker = new SystemLinker();
             
             //components
             var mover = _serviceSystemFactory.ForwardMover(bullet.Transform, BulletSpeed);
+            var destroyed = _serviceSystemFactory.DestroyerOnCollision(bullet.Collider, bullet);
             
             linker.Add(bullet);
             linker.Add(weapon);
             linker.Add(mover);
+            linker.Add(destroyed);
             
             LinkDisposing(binder, linker, weapon, behaviour);
+            binder.LinkEvent(bullet.Destroyed, binder.Dispose);
+            binder.LinkEvent(bullet.Destroyed, (() => Object.Destroy(behaviour.gameObject)));
         }
         
         private void LinkDisposing(Binder binder, SystemLinker linker, IWeapon weapon, MonoBehaviour behaviour)

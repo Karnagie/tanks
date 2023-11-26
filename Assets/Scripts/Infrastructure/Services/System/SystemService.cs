@@ -68,7 +68,7 @@ namespace Infrastructure.Services.System
             var systems = TryFindSystems<T>(filters);
             
             if(systems.Length > 1)
-                Debug.LogError($"There is more than one linker that has {typeof(T)}");
+                Debug.LogError($"There is more than one linker that has {typeof(T)}. Count: {systems.Length}");
             
             if(systems.Length == 0)
             {

@@ -34,6 +34,12 @@ namespace Core.Models.Services
             {
                 shooter.TryShoot();
             }
+            
+            var destroyers = _systemService.TryFindSystems<IDestroyer>();
+            foreach (var destroyer in destroyers)
+            {
+                destroyer.TryDestroy();
+            }
         }
 
         public void FixedTick()
