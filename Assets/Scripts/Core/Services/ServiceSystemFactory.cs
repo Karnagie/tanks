@@ -1,9 +1,8 @@
 ﻿using Core.Models;
 using Core.Models.Systems;
-using Infrastructure.Services.Input;
-using Infrastructure.Services.System;
+using Core.Services.Input;
 
-namespace Infrastructure.Factories
+namespace Core.Services
 {
     public class ServiceSystemFactory
     {

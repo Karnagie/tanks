@@ -1,9 +1,10 @@
-﻿using Infrastructure.States;
+﻿using Infrastructure;
+using Infrastructure.States;
 using UI;
 using UnityEngine;
 using Zenject;
 
-namespace Infrastructure.Services.Ui
+namespace Core.Services
 {
     public class WindowsService
     {

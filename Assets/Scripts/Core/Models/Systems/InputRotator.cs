@@ -1,4 +1,4 @@
-using Infrastructure.Services.Input;
+using Core.Services.Input;
 using UnityEngine;
 
 namespace Core.Models.Systems

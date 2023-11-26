@@ -1,5 +1,5 @@
 ﻿using Core.Models.Services;
-using Infrastructure.Services.Input;
+using Core.Services.Input;
 
 namespace Core.Models.Systems
 {

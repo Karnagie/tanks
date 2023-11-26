@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
-using NotImplementedException = System.NotImplementedException;
 
-namespace Infrastructure.Services.Input
+namespace Core.Services.Input
 {
     public class StandaloneInputService : IInputService, ITickable
     {

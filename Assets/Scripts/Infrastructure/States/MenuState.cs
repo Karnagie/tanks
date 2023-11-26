@@ -1,5 +1,5 @@
-﻿using Infrastructure.Helpers;
-using Infrastructure.Services.Ui;
+﻿using Core.Services;
+using Infrastructure.Helpers;
 
 namespace Infrastructure.States
 {
