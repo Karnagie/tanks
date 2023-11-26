@@ -1,4 +1,5 @@
-﻿using Infrastructure.Services.System;
+﻿using Core.Models.Systems;
+using Infrastructure.Services.System;
 using Zenject;
 
 namespace Core.Models.Services
@@ -25,10 +26,5 @@ namespace Core.Models.Services
         {
             
         }
-    }
-
-    public interface IMover
-    {
-        void Move();
     }
 }

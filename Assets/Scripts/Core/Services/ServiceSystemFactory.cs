@@ -1,18 +1,23 @@
-﻿using Infrastructure.Services.System;
+﻿using Core.Models;
+using Core.Models.Systems;
+using Infrastructure.Services.Input;
+using Infrastructure.Services.System;
 
 namespace Infrastructure.Factories
 {
     public class ServiceSystemFactory
     {
-        private ViewFactory _viewFactory;
-        private SystemService _systemService;
+        private IInputService _inputService;
 
         public ServiceSystemFactory(
-            ViewFactory viewFactory,
-            SystemService systemService)
+            IInputService inputService)
         {
-            _systemService = systemService;
-            _viewFactory = viewFactory;
+            _inputService = inputService;
+        }
+
+        public ISystem InputMover(Unit unit)
+        {
+            return new InputMover(unit, _inputService);
         }
     }
 }

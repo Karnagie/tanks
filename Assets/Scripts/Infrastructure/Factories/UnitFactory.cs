@@ -38,9 +38,10 @@ namespace Infrastructure.Factories
             var linker = new SystemLinker();
             
             //components
-            // var mover = _serviceSystemFactory.PlayerMover(player);
+            var mover = _serviceSystemFactory.InputMover(player);
             
             linker.Add(player);
+            linker.Add(mover);
             
             LinkDisposing(binder, linker, player, behaviour);
         }
